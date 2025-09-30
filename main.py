@@ -193,7 +193,7 @@ class HeyTMKeywordSpotter:
                 factor=0.5, patience=5, min_lr=1e-6, monitor='val_loss'
             ),
             keras.callbacks.ModelCheckpoint(
-                'best_heytm_model.h5', save_best_only=True, 
+                'heytm_model_new.h5', save_best_only=True, 
                 monitor='val_accuracy', mode='max'
             )
         ]
@@ -210,8 +210,8 @@ class HeyTMKeywordSpotter:
         
         return history
     
-    def convert_to_tflite(self, model_path='heytm_model.h5', 
-                         tflite_path='heytm_model.tflite'):
+    def convert_to_tflite(self, model_path='heytm_model_new.h5', 
+                         tflite_path='heytm_model_new.tflite'):
         """Convert trained model to TensorFlow Lite for mobile deployment"""
         
         if self.model is None:
@@ -324,7 +324,7 @@ if __name__ == "__main__":
     kws.plot_training_history(history)
     
     # Save the model
-    kws.model.save('heytm_model.h5')
+    kws.model.save('heytm_model_new.h5')
     
     # Convert to TensorFlow Lite
     kws.convert_to_tflite()
@@ -333,4 +333,4 @@ if __name__ == "__main__":
     # prediction, confidence = kws.predict('path/to/test/audio.wav')
     # print(f"Prediction: {prediction}, Confidence: {confidence:.4f}")
     
-    print("Training completed! Model saved as 'heytm_model.h5' and 'heytm_model.tflite'")
+    print("Training completed! Model saved as 'heytm_model_new.h5' and 'heytm_model_new.tflite'")
