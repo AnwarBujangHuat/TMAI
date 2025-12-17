@@ -1,0 +1,284 @@
+2025-12-16 16:08:26,048 - INFO - 🔄 Downloading pre-trained tiny_conv model...
+2025-12-16 16:08:26,396 - WARNING - Could not download pretrained model: HTTP Error 403: Forbidden
+2025-12-16 16:08:26,396 - INFO - Will train from scratch instead.
+2025-12-16 16:08:26,399 - INFO - 🔄 Loading training dataset...
+2025-12-16 16:08:26,399 - INFO - Loading heytm samples from dataset/heytm...
+2025-12-16 16:08:28,671 - INFO - Loaded 1703 heytm samples
+2025-12-16 16:08:28,671 - INFO - Loading unknown samples from dataset/unknown...
+2025-12-16 16:08:30,780 - INFO - Loaded 2499 unknown samples
+2025-12-16 16:08:30,780 - INFO - Loading background samples from dataset/_background_noise_...
+2025-12-16 16:08:30,806 - INFO - Loaded 6 background samples
+2025-12-16 16:08:30,811 - INFO - Dataset shape: (4208, 101, 13)
+2025-12-16 16:08:30,811 - INFO - Labels shape: (4208,)
+2025-12-16 16:08:30,817 - INFO - Training samples: 3366
+2025-12-16 16:08:30,817 - INFO - Validation samples: 842
+2025-12-16 16:08:30,817 - INFO - 🔄 Building model...
+2025-12-16 16:08:30,874 - INFO - Model: "sequential"
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┓
+┃ Layer (type)                         ┃ Output Shape                ┃         Param # ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━┩
+│ reshape (Reshape)                    │ (None, 101, 13, 1)          │               0 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ separable_conv2d (SeparableConv2D)   │ (None, 101, 13, 32)         │              73 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ batch_normalization                  │ (None, 101, 13, 32)         │             128 │
+│ (BatchNormalization)                 │                             │                 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ max_pooling2d (MaxPooling2D)         │ (None, 50, 6, 32)           │               0 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ dropout (Dropout)                    │ (None, 50, 6, 32)           │               0 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ separable_conv2d_1 (SeparableConv2D) │ (None, 50, 6, 64)           │           2,400 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ batch_normalization_1                │ (None, 50, 6, 64)           │             256 │
+│ (BatchNormalization)                 │                             │                 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ max_pooling2d_1 (MaxPooling2D)       │ (None, 25, 3, 64)           │               0 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ dropout_1 (Dropout)                  │ (None, 25, 3, 64)           │               0 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ separable_conv2d_2 (SeparableConv2D) │ (None, 25, 3, 64)           │           4,736 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ batch_normalization_2                │ (None, 25, 3, 64)           │             256 │
+│ (BatchNormalization)                 │                             │                 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ dropout_2 (Dropout)                  │ (None, 25, 3, 64)           │               0 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ global_average_pooling2d             │ (None, 64)                  │               0 │
+│ (GlobalAveragePooling2D)             │                             │                 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ dense (Dense)                        │ (None, 64)                  │           4,160 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ batch_normalization_3                │ (None, 64)                  │             256 │
+│ (BatchNormalization)                 │                             │                 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ dropout_3 (Dropout)                  │ (None, 64)                  │               0 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ dense_1 (Dense)                      │ (None, 3)                   │             195 │
+└──────────────────────────────────────┴─────────────────────────────┴─────────────────┘
+ Total params: 12,460 (48.67 KB)
+ Trainable params: 12,012 (46.92 KB)
+ Non-trainable params: 448 (1.75 KB)
+
+2025-12-16 16:08:30,874 - INFO - 
+================================================================================
+2025-12-16 16:08:30,874 - INFO - 🚀 STARTING TRAINING
+2025-12-16 16:08:30,874 - INFO - ================================================================================
+
+2025-12-16 16:08:33,644 - WARNING - You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. 
+2025-12-16 16:08:41,105 - WARNING - You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. 
+2025-12-16 16:08:43,007 - WARNING - You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. 
+2025-12-16 16:08:44,829 - WARNING - You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. 
+2025-12-16 16:08:46,725 - WARNING - You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. 
+2025-12-16 16:08:50,830 - WARNING - You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. 
+2025-12-16 16:08:52,997 - WARNING - You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. 
+2025-12-16 16:09:00,007 - WARNING - You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. 
+2025-12-16 16:09:28,458 - INFO - 
+✅ Training completed!
+2025-12-16 16:09:28,458 - INFO - 
+================================================================================
+2025-12-16 16:09:28,458 - INFO - 📊 VALIDATION SET EVALUATION
+2025-12-16 16:09:28,458 - INFO - ================================================================================
+2025-12-16 16:09:28,614 - INFO - Validation Accuracy: 0.9834 (98.34%)
+2025-12-16 16:09:28,614 - INFO - Validation Loss: 0.0721
+2025-12-16 16:09:28,614 - INFO - 
+================================================================================
+2025-12-16 16:09:28,614 - INFO - 🧪 TESTING ON SEPARATE TEST SET
+2025-12-16 16:09:28,614 - INFO - ================================================================================
+2025-12-16 16:09:28,614 - INFO - 
+================================================================================
+2025-12-16 16:09:28,614 - INFO - 🧪 TESTING MODEL ON: test
+2025-12-16 16:09:28,614 - INFO - ================================================================================
+2025-12-16 16:09:28,614 - WARNING - Warning: test/heytm not found!
+2025-12-16 16:09:28,614 - WARNING - Warning: test/unknown not found!
+2025-12-16 16:09:28,614 - WARNING - Warning: test/_background_noise_ not found!
+2025-12-16 16:09:28,614 - INFO - Dataset shape: (0,)
+2025-12-16 16:09:28,614 - INFO - Labels shape: (0,)
+2025-12-16 16:09:28,614 - ERROR - ❌ No test samples found in test
+2025-12-16 16:09:28,614 - INFO - 
+================================================================================
+2025-12-16 16:09:28,614 - INFO - 🔄 CONVERTING TO TFLITE
+2025-12-16 16:09:28,614 - INFO - ================================================================================
+2025-12-16 16:09:28,665 - INFO - Function `function` contains input name(s) resource with unsupported characters which will be renamed to sequential_1_dense_1_2_biasadd_readvariableop_resource in the SavedModel.
+2025-12-16 16:09:28,684 - INFO - Function `function` contains input name(s) resource with unsupported characters which will be renamed to sequential_1_dense_1_2_biasadd_readvariableop_resource in the SavedModel.
+2025-12-16 16:09:28,854 - INFO - Assets written to: /var/folders/9y/7rzjp51d34j4sx7hqgkyl7sh0000gn/T/tmpvaroe67g/assets
+2025-12-16 16:09:29,173 - INFO - ✅ Float TFLite model saved: models_transfer/KWS_transfer_float.tflite (0.05 MB)
+2025-12-16 16:09:29,390 - INFO - Assets written to: /var/folders/9y/7rzjp51d34j4sx7hqgkyl7sh0000gn/T/tmpr1kux9fr/assets
+2025-12-16 16:09:29,656 - INFO - ✅ Quantized TFLite model saved: models_transfer/KWS_transfer.tflite (0.03 MB)
+2025-12-16 16:09:29,656 - INFO - 
+🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉
+2025-12-16 16:09:29,656 - INFO - ✅ TRAINING AND EVALUATION COMPLETED!
+2025-12-16 16:09:29,656 - INFO - 🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉
+2025-12-16 16:09:29,656 - INFO - 
+📁 Models saved in: models_transfer
+2025-12-16 16:09:29,656 - INFO -   ✓ models_transfer/KWS_transfer.h5 (0.23 MB)
+2025-12-16 16:09:29,656 - INFO -   ✓ models_transfer/KWS_transfer_float.tflite (0.05 MB)
+2025-12-16 16:09:29,656 - INFO -   ✓ models_transfer/KWS_transfer.tflite (0.03 MB)
+2025-12-16 16:09:29,656 - INFO - 
+📋 Generated files:
+2025-12-16 16:09:29,656 - INFO -   • training_log.txt - Complete training log
+2025-12-16 16:09:29,656 - INFO -   • test_results_detailed.json - Detailed test metrics
+2025-12-16 16:09:29,656 - INFO -   • confusion_matrix.png - Visual confusion matrix
+2025-12-16 16:09:29,656 - INFO - 
+💡 Next steps:
+2025-12-16 16:09:29,656 - INFO -   1. Review test_results_detailed.json for detailed metrics
+2025-12-16 16:09:29,656 - INFO -   2. Check confusion_matrix.png for visual analysis
+2025-12-16 16:09:29,656 - INFO -   3. Use TensorBoard: tensorboard --logdir=logs_transfer
+2025-12-16 16:09:29,656 - INFO -   4. Deploy TFLite models to mobile devices
+2025-12-16 16:09:29,656 - INFO - 
+================================================================================
+
+2025-12-16 16:12:30,427 - INFO - 🔄 Downloading pre-trained tiny_conv model...
+2025-12-16 16:12:30,698 - WARNING - Could not download pretrained model: HTTP Error 403: Forbidden
+2025-12-16 16:12:30,699 - INFO - Will train from scratch instead.
+2025-12-16 16:12:30,702 - INFO - 🔄 Loading training dataset...
+2025-12-16 16:12:30,702 - INFO - Loading heytm samples from dataset/heytm...
+2025-12-16 16:12:32,732 - INFO - Loaded 1703 heytm samples
+2025-12-16 16:12:32,732 - INFO - Loading unknown samples from dataset/unknown...
+2025-12-16 16:12:34,838 - INFO - Loaded 2499 unknown samples
+2025-12-16 16:12:34,838 - INFO - Loading background samples from dataset/_background_noise_...
+2025-12-16 16:12:34,862 - INFO - Loaded 6 background samples
+2025-12-16 16:12:34,866 - INFO - Dataset shape: (4208, 101, 13)
+2025-12-16 16:12:34,866 - INFO - Labels shape: (4208,)
+2025-12-16 16:12:34,870 - INFO - Training samples: 3366
+2025-12-16 16:12:34,870 - INFO - Validation samples: 842
+2025-12-16 16:12:34,870 - INFO - 🔄 Building model...
+2025-12-16 16:12:34,907 - INFO - Model: "sequential"
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┓
+┃ Layer (type)                         ┃ Output Shape                ┃         Param # ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━┩
+│ reshape (Reshape)                    │ (None, 101, 13, 1)          │               0 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ separable_conv2d (SeparableConv2D)   │ (None, 101, 13, 32)         │              73 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ batch_normalization                  │ (None, 101, 13, 32)         │             128 │
+│ (BatchNormalization)                 │                             │                 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ max_pooling2d (MaxPooling2D)         │ (None, 50, 6, 32)           │               0 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ dropout (Dropout)                    │ (None, 50, 6, 32)           │               0 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ separable_conv2d_1 (SeparableConv2D) │ (None, 50, 6, 64)           │           2,400 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ batch_normalization_1                │ (None, 50, 6, 64)           │             256 │
+│ (BatchNormalization)                 │                             │                 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ max_pooling2d_1 (MaxPooling2D)       │ (None, 25, 3, 64)           │               0 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ dropout_1 (Dropout)                  │ (None, 25, 3, 64)           │               0 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ separable_conv2d_2 (SeparableConv2D) │ (None, 25, 3, 64)           │           4,736 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ batch_normalization_2                │ (None, 25, 3, 64)           │             256 │
+│ (BatchNormalization)                 │                             │                 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ dropout_2 (Dropout)                  │ (None, 25, 3, 64)           │               0 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ global_average_pooling2d             │ (None, 64)                  │               0 │
+│ (GlobalAveragePooling2D)             │                             │                 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ dense (Dense)                        │ (None, 64)                  │           4,160 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ batch_normalization_3                │ (None, 64)                  │             256 │
+│ (BatchNormalization)                 │                             │                 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ dropout_3 (Dropout)                  │ (None, 64)                  │               0 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ dense_1 (Dense)                      │ (None, 3)                   │             195 │
+└──────────────────────────────────────┴─────────────────────────────┴─────────────────┘
+ Total params: 12,460 (48.67 KB)
+ Trainable params: 12,012 (46.92 KB)
+ Non-trainable params: 448 (1.75 KB)
+
+2025-12-16 16:12:34,907 - INFO - 
+================================================================================
+2025-12-16 16:12:34,907 - INFO - 🚀 STARTING TRAINING
+2025-12-16 16:12:34,907 - INFO - ================================================================================
+
+2025-12-16 16:12:37,566 - WARNING - You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. 
+2025-12-16 16:12:42,706 - WARNING - You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. 
+2025-12-16 16:12:44,473 - WARNING - You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. 
+2025-12-16 16:12:46,291 - WARNING - You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. 
+2025-12-16 16:12:48,226 - WARNING - You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. 
+2025-12-16 16:12:50,201 - WARNING - You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. 
+2025-12-16 16:12:56,489 - WARNING - You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. 
+2025-12-16 16:13:00,983 - WARNING - You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. 
+2025-12-16 16:13:10,793 - WARNING - You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. 
+2025-12-16 16:13:13,412 - WARNING - You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. 
+2025-12-16 16:13:18,995 - WARNING - You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. 
+2025-12-16 16:13:41,962 - WARNING - You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. 
+2025-12-16 16:14:11,305 - INFO - 
+✅ Training completed!
+2025-12-16 16:14:11,305 - INFO - 
+================================================================================
+2025-12-16 16:14:11,305 - INFO - 📊 VALIDATION SET EVALUATION
+2025-12-16 16:14:11,305 - INFO - ================================================================================
+2025-12-16 16:14:11,480 - INFO - Validation Accuracy: 0.9941 (99.41%)
+2025-12-16 16:14:11,480 - INFO - Validation Loss: 0.0264
+2025-12-16 16:14:11,480 - INFO - 
+================================================================================
+2025-12-16 16:14:11,480 - INFO - 🧪 TESTING ON SEPARATE TEST SET
+2025-12-16 16:14:11,480 - INFO - ================================================================================
+2025-12-16 16:14:11,480 - INFO - 📁 Detected flat folder structure - testing individual files
+2025-12-16 16:14:11,480 - INFO - Found 25 audio files
+
+2025-12-16 16:14:11,546 - INFO - 0a196374_nohash_0.wav -- positive 0%, negative 100%, silence 0%
+2025-12-16 16:14:11,570 - INFO - 0a196374_nohash_1.wav -- positive 0%, negative 100%, silence 0%
+2025-12-16 16:14:11,594 - INFO - 0a196374_nohash_2.wav -- positive 1%, negative 99%, silence 0%
+2025-12-16 16:14:11,619 - INFO - 0a196374_nohash_3.wav -- positive 5%, negative 95%, silence 0%
+2025-12-16 16:14:11,643 - INFO - 0a196374_nohash_4.wav -- positive 0%, negative 100%, silence 0%
+2025-12-16 16:14:11,667 - INFO - 0a2b400e_nohash_0.wav -- positive 0%, negative 100%, silence 0%
+2025-12-16 16:14:11,692 - INFO - 0a2b400e_nohash_1.wav -- positive 0%, negative 100%, silence 0%
+2025-12-16 16:14:11,716 - INFO - 0a2b400e_nohash_2.wav -- positive 0%, negative 100%, silence 0%
+2025-12-16 16:14:11,741 - INFO - 0a2b400e_nohash_3.wav -- positive 0%, negative 100%, silence 0%
+2025-12-16 16:14:11,764 - INFO - 0a2b400e_nohash_4.wav -- positive 0%, negative 100%, silence 0%
+2025-12-16 16:14:11,789 - INFO - 0a5636ca_nohash_0.wav -- positive 0%, negative 100%, silence 0%
+2025-12-16 16:14:11,814 - INFO - 0ab3b47d_nohash_0.wav -- positive 0%, negative 100%, silence 0%
+2025-12-16 16:14:11,838 - INFO - positive1.wav -- positive 100%, negative 0%, silence 0%
+2025-12-16 16:14:11,862 - INFO - positive10.wav -- positive 100%, negative 0%, silence 0%
+2025-12-16 16:14:11,886 - INFO - positive11.wav -- positive 100%, negative 0%, silence 0%
+2025-12-16 16:14:11,910 - INFO - positive12.wav -- positive 100%, negative 0%, silence 0%
+2025-12-16 16:14:11,933 - INFO - positive13.wav -- positive 100%, negative 0%, silence 0%
+2025-12-16 16:14:11,959 - INFO - positive2.wav -- positive 100%, negative 0%, silence 0%
+2025-12-16 16:14:11,983 - INFO - positive3.wav -- positive 100%, negative 0%, silence 0%
+2025-12-16 16:14:12,008 - INFO - positive4.wav -- positive 100%, negative 0%, silence 0%
+2025-12-16 16:14:12,031 - INFO - positive5.wav -- positive 100%, negative 0%, silence 0%
+2025-12-16 16:14:12,055 - INFO - positive6.wav -- positive 100%, negative 0%, silence 0%
+2025-12-16 16:14:12,080 - INFO - positive7.wav -- positive 100%, negative 0%, silence 0%
+2025-12-16 16:14:12,104 - INFO - positive8.wav -- positive 100%, negative 0%, silence 0%
+2025-12-16 16:14:12,128 - INFO - positive9.wav -- positive 100%, negative 0%, silence 0%
+2025-12-16 16:14:12,129 - INFO - 
+💾 Predictions saved to: test_predictions.json
+2025-12-16 16:14:12,129 - INFO - 
+================================================================================
+2025-12-16 16:14:12,129 - INFO - 🔄 CONVERTING TO TFLITE
+2025-12-16 16:14:12,129 - INFO - ================================================================================
+2025-12-16 16:14:12,179 - INFO - Function `function` contains input name(s) resource with unsupported characters which will be renamed to sequential_1_dense_1_2_biasadd_readvariableop_resource in the SavedModel.
+2025-12-16 16:14:12,199 - INFO - Function `function` contains input name(s) resource with unsupported characters which will be renamed to sequential_1_dense_1_2_biasadd_readvariableop_resource in the SavedModel.
+2025-12-16 16:14:12,367 - INFO - Assets written to: /var/folders/9y/7rzjp51d34j4sx7hqgkyl7sh0000gn/T/tmp7vxwdku8/assets
+2025-12-16 16:14:12,636 - INFO - ✅ Float TFLite model saved: models_transfer/KWS_transfer_float.tflite (0.05 MB)
+2025-12-16 16:14:12,857 - INFO - Assets written to: /var/folders/9y/7rzjp51d34j4sx7hqgkyl7sh0000gn/T/tmpyreukzmm/assets
+2025-12-16 16:14:13,123 - INFO - ✅ Quantized TFLite model saved: models_transfer/KWS_transfer.tflite (0.03 MB)
+2025-12-16 16:14:13,124 - INFO - 
+🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉
+2025-12-16 16:14:13,124 - INFO - ✅ TRAINING AND EVALUATION COMPLETED!
+2025-12-16 16:14:13,124 - INFO - 🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉
+2025-12-16 16:14:13,124 - INFO - 
+📁 Models saved in: models_transfer
+2025-12-16 16:14:13,124 - INFO -   ✓ models_transfer/KWS_transfer.h5 (0.23 MB)
+2025-12-16 16:14:13,124 - INFO -   ✓ models_transfer/KWS_transfer_float.tflite (0.05 MB)
+2025-12-16 16:14:13,124 - INFO -   ✓ models_transfer/KWS_transfer.tflite (0.03 MB)
+2025-12-16 16:14:13,124 - INFO - 
+📋 Generated files:
+2025-12-16 16:14:13,124 - INFO -   • training_log.txt - Complete training log
+2025-12-16 16:14:13,124 - INFO -   • test_results_detailed.json - Detailed test metrics
+2025-12-16 16:14:13,124 - INFO -   • confusion_matrix.png - Visual confusion matrix
+2025-12-16 16:14:13,124 - INFO - 
+💡 Next steps:
+2025-12-16 16:14:13,124 - INFO -   1. Review test_results_detailed.json for detailed metrics
+2025-12-16 16:14:13,124 - INFO -   2. Check confusion_matrix.png for visual analysis
+2025-12-16 16:14:13,124 - INFO -   3. Use TensorBoard: tensorboard --logdir=logs_transfer
+2025-12-16 16:14:13,124 - INFO -   4. Deploy TFLite models to mobile devices
+2025-12-16 16:14:13,124 - INFO - 
+================================================================================
+

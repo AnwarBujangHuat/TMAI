@@ -1,0 +1,207 @@
+{
+  "timestamp": "2025-12-16T16:14:12.128962",
+  "test_folder": "test",
+  "total_files": 25,
+  "results": [
+    {
+      "filename": "0a196374_nohash_0.wav",
+      "predictions": {
+        "positive": 0.0015089772641658783,
+        "negative": 0.9972414970397949,
+        "silence": 0.0012495041592046618
+      }
+    },
+    {
+      "filename": "0a196374_nohash_1.wav",
+      "predictions": {
+        "positive": 0.001901334268040955,
+        "negative": 0.9972227811813354,
+        "silence": 0.0008758900221437216
+      }
+    },
+    {
+      "filename": "0a196374_nohash_2.wav",
+      "predictions": {
+        "positive": 0.014090485870838165,
+        "negative": 0.9850990772247314,
+        "silence": 0.0008105594897642732
+      }
+    },
+    {
+      "filename": "0a196374_nohash_3.wav",
+      "predictions": {
+        "positive": 0.05155032500624657,
+        "negative": 0.9474658966064453,
+        "silence": 0.0009837462566792965
+      }
+    },
+    {
+      "filename": "0a196374_nohash_4.wav",
+      "predictions": {
+        "positive": 0.001517480704933405,
+        "negative": 0.99765944480896,
+        "silence": 0.0008230910170823336
+      }
+    },
+    {
+      "filename": "0a2b400e_nohash_0.wav",
+      "predictions": {
+        "positive": 1.3283786756801419e-05,
+        "negative": 0.998878538608551,
+        "silence": 0.001108099240809679
+      }
+    },
+    {
+      "filename": "0a2b400e_nohash_1.wav",
+      "predictions": {
+        "positive": 8.425294254266191e-06,
+        "negative": 0.9986664056777954,
+        "silence": 0.0013251083437353373
+      }
+    },
+    {
+      "filename": "0a2b400e_nohash_2.wav",
+      "predictions": {
+        "positive": 0.00012958589650224894,
+        "negative": 0.9991311430931091,
+        "silence": 0.0007392498664557934
+      }
+    },
+    {
+      "filename": "0a2b400e_nohash_3.wav",
+      "predictions": {
+        "positive": 0.0002068507019430399,
+        "negative": 0.9990959167480469,
+        "silence": 0.0006972452392801642
+      }
+    },
+    {
+      "filename": "0a2b400e_nohash_4.wav",
+      "predictions": {
+        "positive": 0.00021206372184678912,
+        "negative": 0.9991307854652405,
+        "silence": 0.000657244527246803
+      }
+    },
+    {
+      "filename": "0a5636ca_nohash_0.wav",
+      "predictions": {
+        "positive": 0.0006063882610760629,
+        "negative": 0.9986061453819275,
+        "silence": 0.0007874426082707942
+      }
+    },
+    {
+      "filename": "0ab3b47d_nohash_0.wav",
+      "predictions": {
+        "positive": 1.3248308277979959e-05,
+        "negative": 0.9982373714447021,
+        "silence": 0.0017494582571089268
+      }
+    },
+    {
+      "filename": "positive1.wav",
+      "predictions": {
+        "positive": 0.9995643496513367,
+        "negative": 4.518243713391712e-06,
+        "silence": 0.00043106311932206154
+      }
+    },
+    {
+      "filename": "positive10.wav",
+      "predictions": {
+        "positive": 0.9996262788772583,
+        "negative": 1.1426659085600477e-07,
+        "silence": 0.00037358893314376473
+      }
+    },
+    {
+      "filename": "positive11.wav",
+      "predictions": {
+        "positive": 0.9996567964553833,
+        "negative": 8.59502424788161e-09,
+        "silence": 0.00034318448160775006
+      }
+    },
+    {
+      "filename": "positive12.wav",
+      "predictions": {
+        "positive": 0.9995973706245422,
+        "negative": 1.1589587245453004e-07,
+        "silence": 0.00040256502688862383
+      }
+    },
+    {
+      "filename": "positive13.wav",
+      "predictions": {
+        "positive": 0.9995869994163513,
+        "negative": 7.80523663479471e-08,
+        "silence": 0.00041292363312095404
+      }
+    },
+    {
+      "filename": "positive2.wav",
+      "predictions": {
+        "positive": 0.9968024492263794,
+        "negative": 0.0008311833371408284,
+        "silence": 0.0023663241881877184
+      }
+    },
+    {
+      "filename": "positive3.wav",
+      "predictions": {
+        "positive": 0.9996222257614136,
+        "negative": 1.1489076996440417e-06,
+        "silence": 0.00037651590537279844
+      }
+    },
+    {
+      "filename": "positive4.wav",
+      "predictions": {
+        "positive": 0.9995750784873962,
+        "negative": 4.420778623170918e-06,
+        "silence": 0.0004205114091746509
+      }
+    },
+    {
+      "filename": "positive5.wav",
+      "predictions": {
+        "positive": 0.9990492463111877,
+        "negative": 4.568310941976961e-06,
+        "silence": 0.0009462691377848387
+      }
+    },
+    {
+      "filename": "positive6.wav",
+      "predictions": {
+        "positive": 0.9992685914039612,
+        "negative": 1.209521997225238e-06,
+        "silence": 0.0007301627774722874
+      }
+    },
+    {
+      "filename": "positive7.wav",
+      "predictions": {
+        "positive": 0.9997128844261169,
+        "negative": 8.470824042206004e-08,
+        "silence": 0.0002869894669856876
+      }
+    },
+    {
+      "filename": "positive8.wav",
+      "predictions": {
+        "positive": 0.9997202754020691,
+        "negative": 6.56034302437547e-08,
+        "silence": 0.00027956595295108855
+      }
+    },
+    {
+      "filename": "positive9.wav",
+      "predictions": {
+        "positive": 0.9997082352638245,
+        "negative": 2.1179920395297813e-07,
+        "silence": 0.0002915389195550233
+      }
+    }
+  ]
+}
