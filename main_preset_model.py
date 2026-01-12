@@ -1,18 +1,15 @@
 # -*- coding: utf-8 -*-
 """
-Transfer learning for custom keyword spotting (KWS) model for "hey tm"
-with comprehensive testing and accuracy evaluation.
+Train-from-scratch keyword spotting (KWS) model for "hey tm"
+with separate test-folder evaluation (no train/val split).
 """
 
 import os
 import sys
-import urllib.request
-import zipfile
 import numpy as np
 import tensorflow as tf
 import librosa
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import classification_report, confusion_matrix, accuracy_score
+from sklearn.metrics import classification_report, confusion_matrix
 import logging
 import json
 from datetime import datetime
@@ -265,12 +262,11 @@ class ModelTester:
 # ---- Setup paths ----
 DATASET_DIR = "dataset"  # Training dataset
 TEST_DIR = "test"  # Test dataset with same structure
-TRAIN_DIR = "train_transfer"
-LOGS_DIR = "logs_transfer"
-MODELS_DIR = "models_transfer"
-PRETRAINED_DIR = "pretrained"
+TRAIN_DIR = "train_scratch"
+LOGS_DIR = "logs_scratch"
+MODELS_DIR = "models_scratch"
 
-for d in [TRAIN_DIR, LOGS_DIR, MODELS_DIR, PRETRAINED_DIR]:
+for d in [TRAIN_DIR, LOGS_DIR, MODELS_DIR]:
     os.makedirs(d, exist_ok=True)
 
 # ---- Config ----
@@ -279,28 +275,12 @@ NUM_CLASSES = len(WANTED_WORDS)
 TRAINING_EPOCHS = 50
 BATCH_SIZE = 32
 LEARNING_RATE = 0.0005
-VALIDATION_SPLIT = 0.2
 
-MODEL_TFLITE = os.path.join(MODELS_DIR, "KWS_transfer.tflite")
-FLOAT_MODEL_TFLITE = os.path.join(MODELS_DIR, "KWS_transfer_float.tflite")
-MODEL_H5 = os.path.join(MODELS_DIR, "KWS_transfer.h5")
-
-# ---- Download pre-trained model ----
-PRETRAINED_URL = "https://storage.googleapis.com/download.tensorflow.org/models/tflite/speech_micro_pretrained_model_2020_04_28.zip"
-pretrained_zip = os.path.join(PRETRAINED_DIR, "pretrained.zip")
-pretrained_model = os.path.join(PRETRAINED_DIR, "tiny_conv.tflite")
-
-if not os.path.exists(pretrained_model):
-    logging.info("🔄 Downloading pre-trained tiny_conv model...")
-    try:
-        urllib.request.urlretrieve(PRETRAINED_URL, pretrained_zip)
-        with zipfile.ZipFile(pretrained_zip, 'r') as zip_ref:
-            zip_ref.extractall(PRETRAINED_DIR)
-        os.remove(pretrained_zip)
-        logging.info("✅ Pre-trained model downloaded and extracted.")
-    except Exception as e:
-        logging.warning(f"Could not download pretrained model: {e}")
-        logging.info("Will train from scratch instead.")
+MODEL_TAG = "scratch"
+MODEL_PREFIX = f"KWS_{MODEL_TAG}"
+MODEL_TFLITE = os.path.join(MODELS_DIR, f"{MODEL_PREFIX}.tflite")
+FLOAT_MODEL_TFLITE = os.path.join(MODELS_DIR, f"{MODEL_PREFIX}_float.tflite")
+MODEL_H5 = os.path.join(MODELS_DIR, f"{MODEL_PREFIX}.h5")
 
 # ---- Load dataset ----
 logging.info("🔄 Loading training dataset...")
@@ -314,16 +294,11 @@ if len(X) == 0:
 # Convert labels to categorical
 y_categorical = tf.keras.utils.to_categorical(y, NUM_CLASSES)
 
-# Split dataset
-X_train, X_val, y_train, y_val = train_test_split(
-    X, y_categorical, 
-    test_size=VALIDATION_SPLIT, 
-    random_state=42, 
-    stratify=y
-)
+# Use the full dataset for training (test set is in a separate folder)
+X_train, y_train = X, y_categorical
 
 logging.info(f"Training samples: {len(X_train)}")
-logging.info(f"Validation samples: {len(X_val)}")
+logging.info("Using full dataset for training (no validation split).")
 
 # ---- Build model ----
 def create_transfer_model(input_shape, num_classes):
@@ -376,22 +351,17 @@ model.summary(print_fn=logging.info)
 
 # ---- Training callbacks ----
 callbacks = [
-    tf.keras.callbacks.EarlyStopping(
-        patience=10,
-        restore_best_weights=True,
-        monitor='val_accuracy'
-    ),
     tf.keras.callbacks.ReduceLROnPlateau(
         factor=0.5,
         patience=5,
         min_lr=1e-6,
-        monitor='val_loss'
+        monitor='loss'
     ),
     tf.keras.callbacks.ModelCheckpoint(
         MODEL_H5,
         save_best_only=True,
-        monitor='val_accuracy',
-        mode='max'
+        monitor='loss',
+        mode='min'
     ),
     tf.keras.callbacks.TensorBoard(
         log_dir=LOGS_DIR,
@@ -408,7 +378,6 @@ history = model.fit(
     X_train, y_train,
     batch_size=BATCH_SIZE,
     epochs=TRAINING_EPOCHS,
-    validation_data=(X_val, y_val),
     callbacks=callbacks,
     verbose=1
 )
@@ -417,12 +386,12 @@ logging.info("\n✅ Training completed!")
 
 # ---- Validation Evaluation ----
 logging.info("\n" + "="*80)
-logging.info("📊 VALIDATION SET EVALUATION")
+logging.info("📊 TRAINING SET EVALUATION")
 logging.info("="*80)
 
-val_loss, val_accuracy = model.evaluate(X_val, y_val, verbose=0)
-logging.info(f"Validation Accuracy: {val_accuracy:.4f} ({val_accuracy*100:.2f}%)")
-logging.info(f"Validation Loss: {val_loss:.4f}")
+train_loss, train_accuracy = model.evaluate(X_train, y_train, verbose=0)
+logging.info(f"Training Accuracy: {train_accuracy:.4f} ({train_accuracy*100:.2f}%)")
+logging.info(f"Training Loss: {train_loss:.4f}")
 
 # ---- Test on separate test folder ----
 if os.path.exists(TEST_DIR):
@@ -557,7 +526,7 @@ logging.info("  • confusion_matrix.png - Visual confusion matrix")
 logging.info("\n💡 Next steps:")
 logging.info("  1. Review test_results_detailed.json for detailed metrics")
 logging.info("  2. Check confusion_matrix.png for visual analysis")
-logging.info("  3. Use TensorBoard: tensorboard --logdir=logs_transfer")
+logging.info(f"  3. Use TensorBoard: tensorboard --logdir={LOGS_DIR}")
 logging.info("  4. Deploy TFLite models to mobile devices")
 
 logging.info("\n" + "="*80 + "\n")

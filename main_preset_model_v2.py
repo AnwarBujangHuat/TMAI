@@ -73,8 +73,8 @@ FEATURE_BIN_COUNT = 40
 BACKGROUND_FREQUENCY = 0.8
 BACKGROUND_VOLUME_RANGE = 0.1
 TIME_SHIFT_MS = 100.0
-VALIDATION_PERCENTAGE = 10
-TESTING_PERCENTAGE = 10
+VALIDATION_PERCENTAGE = 0
+TESTING_PERCENTAGE = 0
 
 # Output files
 MODEL_TFLITE = os.path.join(MODELS_DIR, "KWS_transfer.tflite")
@@ -129,6 +129,8 @@ train_command = (
     f"--wanted_words={WANTED_WORDS} "
     f"--silence_percentage={SILENT_PERCENTAGE} "
     f"--unknown_percentage={UNKNOWN_PERCENTAGE} "
+    f"--validation_percentage={VALIDATION_PERCENTAGE} "
+    f"--testing_percentage={TESTING_PERCENTAGE} "
     f"--preprocess={PREPROCESS} "
     f"--window_stride={WINDOW_STRIDE} "
     f"--model_architecture={MODEL_ARCHITECTURE} "
@@ -222,7 +224,7 @@ try:
                     data, _ = audio_processor.get_data(
                         1, i, model_settings,
                         BACKGROUND_FREQUENCY, BACKGROUND_VOLUME_RANGE,
-                        TIME_SHIFT_MS, "testing", sess
+                        TIME_SHIFT_MS, "training", sess
                     )
                     flattened = np.array(data.flatten(), dtype=np.float32).reshape(1, -1)
                     yield [flattened]
