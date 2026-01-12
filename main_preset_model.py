@@ -407,12 +407,9 @@ if os.path.exists(TEST_DIR):
         logging.info("📁 Detected flat folder structure - testing individual files")
         logging.info(f"Found {len(audio_files)} audio files\n")
         
-        # Map class names to friendly labels
-        class_labels = {
-            'heytm': 'positive',
-            'unknown': 'negative', 
-            'background': 'silence'
-        }
+        # Print table header
+        print(f"\n{'Filename':<50} {'Prediction':<15} {'Positive':<12} {'Negative':<12} {'Silence':<12}")
+        print("-" * 110)
         
         results_list = []
         for audio_file in sorted(audio_files):
@@ -421,29 +418,41 @@ if os.path.exists(TEST_DIR):
             # Extract features
             features = extractor.extract_features(file_path)
             if features is None:
-                logging.warning(f"⚠️  Could not process: {audio_file}")
+                print(f"{audio_file:<50} {'ERROR':<15} {'N/A':<12} {'N/A':<12} {'N/A':<12}")
                 continue
             
             # Predict
             features_batch = np.expand_dims(features, axis=0)
             predictions = model.predict(features_batch, verbose=0)[0]
             
-            # Format output
-            pred_str = ", ".join([
-                f"{class_labels[WANTED_WORDS[i]]} {predictions[i]*100:.0f}%" 
-                for i in range(len(WANTED_WORDS))
-            ])
+            # Get probabilities for each class
+            positive_prob = predictions[0] * 100  # heytm
+            negative_prob = predictions[1] * 100  # unknown
+            silence_prob = predictions[2] * 100   # background
             
-            output_line = f"{audio_file} -- {pred_str}"
-            logging.info(output_line)
+            # Determine prediction label
+            predicted_idx = np.argmax(predictions)
+            if predicted_idx == 0:
+                prediction_label = "heytm"
+            elif predicted_idx == 1:
+                prediction_label = "unknown"
+            else:
+                prediction_label = "background"
+            
+            # Print result in table format
+            print(f"{audio_file:<50} {prediction_label:<15} {positive_prob:>10.2f}%  {negative_prob:>10.2f}%  {silence_prob:>10.2f}%")
             
             results_list.append({
                 'filename': audio_file,
-                'predictions': {
-                    class_labels[WANTED_WORDS[i]]: float(predictions[i]) 
-                    for i in range(len(WANTED_WORDS))
+                'prediction': prediction_label,
+                'probabilities': {
+                    'positive': float(positive_prob),
+                    'negative': float(negative_prob),
+                    'silence': float(silence_prob)
                 }
             })
+        
+        print("-" * 110)
         
         # Save results
         results_output = {
@@ -520,12 +529,13 @@ for model_file in [MODEL_H5, FLOAT_MODEL_TFLITE, MODEL_TFLITE]:
 
 logging.info("\n📋 Generated files:")
 logging.info("  • training_log.txt - Complete training log")
-logging.info("  • test_results_detailed.json - Detailed test metrics")
-logging.info("  • confusion_matrix.png - Visual confusion matrix")
+logging.info("  • test_predictions.json - Flat folder test results")
+logging.info("  • test_results_detailed.json - Detailed test metrics (if subfolder structure)")
+logging.info("  • confusion_matrix.png - Visual confusion matrix (if subfolder structure)")
 
 logging.info("\n💡 Next steps:")
-logging.info("  1. Review test_results_detailed.json for detailed metrics")
-logging.info("  2. Check confusion_matrix.png for visual analysis")
+logging.info("  1. Review test results in JSON files")
+logging.info("  2. Check confusion_matrix.png for visual analysis (if available)")
 logging.info(f"  3. Use TensorBoard: tensorboard --logdir={LOGS_DIR}")
 logging.info("  4. Deploy TFLite models to mobile devices")
 

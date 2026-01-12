@@ -1,0 +1,230 @@
+{
+  "timestamp": "2026-01-12T11:18:43.232781",
+  "results": [
+    {
+      "filename": "0a196374_nohash_0.wav",
+      "prediction": "unknown",
+      "probabilities": {
+        "positive": 0.012648923322558403,
+        "negative": 99.98663330078125,
+        "silence": 0.0007113163592293859
+      }
+    },
+    {
+      "filename": "0a196374_nohash_1.wav",
+      "prediction": "unknown",
+      "probabilities": {
+        "positive": 0.022256899625062943,
+        "negative": 99.9753189086914,
+        "silence": 0.002420138567686081
+      }
+    },
+    {
+      "filename": "0a196374_nohash_2.wav",
+      "prediction": "unknown",
+      "probabilities": {
+        "positive": 0.09991158545017242,
+        "negative": 99.89363861083984,
+        "silence": 0.006452865432947874
+      }
+    },
+    {
+      "filename": "0a196374_nohash_3.wav",
+      "prediction": "unknown",
+      "probabilities": {
+        "positive": 0.010750027373433113,
+        "negative": 99.98545837402344,
+        "silence": 0.003791560884565115
+      }
+    },
+    {
+      "filename": "0a196374_nohash_4.wav",
+      "prediction": "unknown",
+      "probabilities": {
+        "positive": 0.6207482218742371,
+        "negative": 99.37164306640625,
+        "silence": 0.0076118819415569305
+      }
+    },
+    {
+      "filename": "0a2b400e_nohash_0.wav",
+      "prediction": "unknown",
+      "probabilities": {
+        "positive": 0.013365603983402252,
+        "negative": 99.98258972167969,
+        "silence": 0.004048153292387724
+      }
+    },
+    {
+      "filename": "0a2b400e_nohash_1.wav",
+      "prediction": "unknown",
+      "probabilities": {
+        "positive": 0.007877979427576065,
+        "negative": 99.99165344238281,
+        "silence": 0.0004596988146658987
+      }
+    },
+    {
+      "filename": "0a2b400e_nohash_2.wav",
+      "prediction": "unknown",
+      "probabilities": {
+        "positive": 0.00524127297103405,
+        "negative": 99.99288177490234,
+        "silence": 0.0018681082874536514
+      }
+    },
+    {
+      "filename": "0a2b400e_nohash_3.wav",
+      "prediction": "unknown",
+      "probabilities": {
+        "positive": 0.000589104020036757,
+        "negative": 99.99781799316406,
+        "silence": 0.0016005340730771422
+      }
+    },
+    {
+      "filename": "0a2b400e_nohash_4.wav",
+      "prediction": "unknown",
+      "probabilities": {
+        "positive": 0.008007439784705639,
+        "negative": 99.9903564453125,
+        "silence": 0.0016326119657605886
+      }
+    },
+    {
+      "filename": "0a5636ca_nohash_0.wav",
+      "prediction": "unknown",
+      "probabilities": {
+        "positive": 0.027683399617671967,
+        "negative": 99.96685791015625,
+        "silence": 0.005454482045024633
+      }
+    },
+    {
+      "filename": "0ab3b47d_nohash_0.wav",
+      "prediction": "unknown",
+      "probabilities": {
+        "positive": 0.14774450659751892,
+        "negative": 99.851318359375,
+        "silence": 0.000937060744035989
+      }
+    },
+    {
+      "filename": "positive1.wav",
+      "prediction": "heytm",
+      "probabilities": {
+        "positive": 93.56946563720703,
+        "negative": 6.416049003601074,
+        "silence": 0.014485700987279415
+      }
+    },
+    {
+      "filename": "positive10.wav",
+      "prediction": "heytm",
+      "probabilities": {
+        "positive": 96.09090423583984,
+        "negative": 3.8896520137786865,
+        "silence": 0.01944507658481598
+      }
+    },
+    {
+      "filename": "positive11.wav",
+      "prediction": "heytm",
+      "probabilities": {
+        "positive": 99.9482650756836,
+        "negative": 0.045099105685949326,
+        "silence": 0.006631424184888601
+      }
+    },
+    {
+      "filename": "positive12.wav",
+      "prediction": "heytm",
+      "probabilities": {
+        "positive": 99.98418426513672,
+        "negative": 0.01174843218177557,
+        "silence": 0.004066163673996925
+      }
+    },
+    {
+      "filename": "positive13.wav",
+      "prediction": "heytm",
+      "probabilities": {
+        "positive": 95.8468246459961,
+        "negative": 4.1331586837768555,
+        "silence": 0.020022215321660042
+      }
+    },
+    {
+      "filename": "positive2.wav",
+      "prediction": "heytm",
+      "probabilities": {
+        "positive": 99.60755920410156,
+        "negative": 0.38564348220825195,
+        "silence": 0.00679077859967947
+      }
+    },
+    {
+      "filename": "positive3.wav",
+      "prediction": "heytm",
+      "probabilities": {
+        "positive": 96.15133666992188,
+        "negative": 3.832428455352783,
+        "silence": 0.016226008534431458
+      }
+    },
+    {
+      "filename": "positive4.wav",
+      "prediction": "heytm",
+      "probabilities": {
+        "positive": 54.49890899658203,
+        "negative": 45.489601135253906,
+        "silence": 0.01149279996752739
+      }
+    },
+    {
+      "filename": "positive5.wav",
+      "prediction": "heytm",
+      "probabilities": {
+        "positive": 99.9298324584961,
+        "negative": 0.06594333797693253,
+        "silence": 0.004216290079057217
+      }
+    },
+    {
+      "filename": "positive6.wav",
+      "prediction": "heytm",
+      "probabilities": {
+        "positive": 99.81053924560547,
+        "negative": 0.18557269871234894,
+        "silence": 0.0038729708176106215
+      }
+    },
+    {
+      "filename": "positive7.wav",
+      "prediction": "heytm",
+      "probabilities": {
+        "positive": 99.27330017089844,
+        "negative": 0.7161077260971069,
+        "silence": 0.010587579570710659
+      }
+    },
+    {
+      "filename": "positive8.wav",
+      "prediction": "heytm",
+      "probabilities": {
+        "positive": 99.99734497070312,
+        "negative": 0.0003194124437868595,
+        "silence": 0.0023404499515891075
+      }
+    },
+    {
+      "filename": "positive9.wav",
+      "prediction": "heytm",
+      "probabilities": {
+        "positive": 99.93733978271484,
+        "negative": 0.0550973154604435,
+        "silence": 0.00756688741967082
+      }
+    }
+  ]
+}

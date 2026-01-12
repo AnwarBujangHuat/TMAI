@@ -1,206 +1,231 @@
 {
-  "timestamp": "2026-01-12T09:55:13.466019",
+  "timestamp": "2026-01-12T11:01:21.974236",
   "test_folder": "test",
   "total_files": 25,
   "results": [
     {
       "filename": "0a196374_nohash_0.wav",
-      "predictions": {
-        "positive": 2.4345925339730456e-05,
-        "negative": 0.9999094009399414,
-        "silence": 6.622763612540439e-05
+      "prediction": "unknown",
+      "probabilities": {
+        "positive": 0.20151987671852112,
+        "negative": 99.79712677001953,
+        "silence": 0.001361729810014367
       }
     },
     {
       "filename": "0a196374_nohash_1.wav",
-      "predictions": {
-        "positive": 1.0431864211568609e-05,
-        "negative": 0.9999574422836304,
-        "silence": 3.2082647521747276e-05
+      "prediction": "unknown",
+      "probabilities": {
+        "positive": 0.6613562107086182,
+        "negative": 99.33805847167969,
+        "silence": 0.0005933321081101894
       }
     },
     {
       "filename": "0a196374_nohash_2.wav",
-      "predictions": {
-        "positive": 0.0005965151940472424,
-        "negative": 0.999290943145752,
-        "silence": 0.00011255405115662143
+      "prediction": "unknown",
+      "probabilities": {
+        "positive": 3.1010241508483887,
+        "negative": 96.89729309082031,
+        "silence": 0.0016899676993489265
       }
     },
     {
       "filename": "0a196374_nohash_3.wav",
-      "predictions": {
-        "positive": 0.00018460690625943244,
-        "negative": 0.9997298121452332,
-        "silence": 8.559381967643276e-05
+      "prediction": "unknown",
+      "probabilities": {
+        "positive": 5.40524959564209,
+        "negative": 94.5941162109375,
+        "silence": 0.0006271969177760184
       }
     },
     {
       "filename": "0a196374_nohash_4.wav",
-      "predictions": {
-        "positive": 8.282686030725017e-05,
-        "negative": 0.9998186230659485,
-        "silence": 9.85304795904085e-05
+      "prediction": "unknown",
+      "probabilities": {
+        "positive": 1.1280790567398071,
+        "negative": 98.86725616455078,
+        "silence": 0.004670852795243263
       }
     },
     {
       "filename": "0a2b400e_nohash_0.wav",
-      "predictions": {
-        "positive": 2.929212678282056e-05,
-        "negative": 0.9999147653579712,
-        "silence": 5.588743806583807e-05
+      "prediction": "unknown",
+      "probabilities": {
+        "positive": 0.03532644361257553,
+        "negative": 99.94908905029297,
+        "silence": 0.015585233457386494
       }
     },
     {
       "filename": "0a2b400e_nohash_1.wav",
-      "predictions": {
-        "positive": 0.00020015417248941958,
-        "negative": 0.9996125102043152,
-        "silence": 0.00018734314653556794
+      "prediction": "unknown",
+      "probabilities": {
+        "positive": 0.014988836832344532,
+        "negative": 99.94378662109375,
+        "silence": 0.041221167892217636
       }
     },
     {
       "filename": "0a2b400e_nohash_2.wav",
-      "predictions": {
-        "positive": 0.00019205220451112837,
-        "negative": 0.9997242093086243,
-        "silence": 8.37594925542362e-05
+      "prediction": "unknown",
+      "probabilities": {
+        "positive": 0.4177146553993225,
+        "negative": 99.55862426757812,
+        "silence": 0.023655330762267113
       }
     },
     {
       "filename": "0a2b400e_nohash_3.wav",
-      "predictions": {
-        "positive": 9.283510007662699e-05,
-        "negative": 0.9998143315315247,
-        "silence": 9.290542220696807e-05
+      "prediction": "unknown",
+      "probabilities": {
+        "positive": 0.24724963307380676,
+        "negative": 99.71989440917969,
+        "silence": 0.0328548327088356
       }
     },
     {
       "filename": "0a2b400e_nohash_4.wav",
-      "predictions": {
-        "positive": 0.00015257032646331936,
-        "negative": 0.99981290102005,
-        "silence": 3.4598106140038e-05
+      "prediction": "unknown",
+      "probabilities": {
+        "positive": 0.17788657546043396,
+        "negative": 99.8156967163086,
+        "silence": 0.0064173173159360886
       }
     },
     {
       "filename": "0a5636ca_nohash_0.wav",
-      "predictions": {
-        "positive": 0.0006651034927926958,
-        "negative": 0.9993141889572144,
-        "silence": 2.0770712580997497e-05
+      "prediction": "unknown",
+      "probabilities": {
+        "positive": 0.8164981603622437,
+        "negative": 99.10043334960938,
+        "silence": 0.0830594077706337
       }
     },
     {
       "filename": "0ab3b47d_nohash_0.wav",
-      "predictions": {
-        "positive": 0.000358306773705408,
-        "negative": 0.9995033740997314,
-        "silence": 0.0001382779737468809
+      "prediction": "unknown",
+      "probabilities": {
+        "positive": 0.5211946964263916,
+        "negative": 99.12142944335938,
+        "silence": 0.3573707640171051
       }
     },
     {
       "filename": "positive1.wav",
-      "predictions": {
-        "positive": 0.9979099631309509,
-        "negative": 0.002041760366410017,
-        "silence": 4.83252624690067e-05
+      "prediction": "heytm",
+      "probabilities": {
+        "positive": 99.93034362792969,
+        "negative": 0.06410972774028778,
+        "silence": 0.005534308962523937
       }
     },
     {
       "filename": "positive10.wav",
-      "predictions": {
-        "positive": 0.9999973773956299,
-        "negative": 1.1497736096544031e-07,
-        "silence": 2.5300664674432483e-06
+      "prediction": "heytm",
+      "probabilities": {
+        "positive": 99.99543762207031,
+        "negative": 0.0013863903004676104,
+        "silence": 0.0031768372282385826
       }
     },
     {
       "filename": "positive11.wav",
-      "predictions": {
-        "positive": 0.9999988079071045,
-        "negative": 7.779657096307346e-08,
-        "silence": 1.1045217434002552e-06
+      "prediction": "heytm",
+      "probabilities": {
+        "positive": 99.98214721679688,
+        "negative": 0.008511778898537159,
+        "silence": 0.00934259407222271
       }
     },
     {
       "filename": "positive12.wav",
-      "predictions": {
-        "positive": 0.9999892711639404,
-        "negative": 2.190294935644488e-06,
-        "silence": 8.543083822587505e-06
+      "prediction": "heytm",
+      "probabilities": {
+        "positive": 99.9889144897461,
+        "negative": 0.007006681524217129,
+        "silence": 0.004077108111232519
       }
     },
     {
       "filename": "positive13.wav",
-      "predictions": {
-        "positive": 0.9999953508377075,
-        "negative": 1.3940967846792773e-06,
-        "silence": 3.1674030651629437e-06
+      "prediction": "heytm",
+      "probabilities": {
+        "positive": 99.94365692138672,
+        "negative": 0.02499149926006794,
+        "silence": 0.03134385123848915
       }
     },
     {
       "filename": "positive2.wav",
-      "predictions": {
-        "positive": 0.9993200302124023,
-        "negative": 0.0006388304755091667,
-        "silence": 4.108622670173645e-05
+      "prediction": "heytm",
+      "probabilities": {
+        "positive": 99.3749008178711,
+        "negative": 0.624855637550354,
+        "silence": 0.0002520110283512622
       }
     },
     {
       "filename": "positive3.wav",
-      "predictions": {
-        "positive": 0.9988576173782349,
-        "negative": 0.0010982220992445946,
-        "silence": 4.422337224241346e-05
+      "prediction": "heytm",
+      "probabilities": {
+        "positive": 99.99201202392578,
+        "negative": 0.007917550392448902,
+        "silence": 7.636893860762939e-05
       }
     },
     {
       "filename": "positive4.wav",
-      "predictions": {
-        "positive": 0.9998140931129456,
-        "negative": 0.00016021459305193275,
-        "silence": 2.5728282707859762e-05
+      "prediction": "heytm",
+      "probabilities": {
+        "positive": 99.91328430175781,
+        "negative": 0.08655258268117905,
+        "silence": 0.00016341991431545466
       }
     },
     {
       "filename": "positive5.wav",
-      "predictions": {
-        "positive": 0.9984878301620483,
-        "negative": 0.0014822665834799409,
-        "silence": 2.9894044928369112e-05
+      "prediction": "heytm",
+      "probabilities": {
+        "positive": 99.69564819335938,
+        "negative": 0.3040179908275604,
+        "silence": 0.0003286213323008269
       }
     },
     {
       "filename": "positive6.wav",
-      "predictions": {
-        "positive": 0.9999805688858032,
-        "negative": 2.3039031020744005e-06,
-        "silence": 1.7184172975248657e-05
+      "prediction": "heytm",
+      "probabilities": {
+        "positive": 99.97201538085938,
+        "negative": 0.024602413177490234,
+        "silence": 0.00338122365064919
       }
     },
     {
       "filename": "positive7.wav",
-      "predictions": {
-        "positive": 0.9999985694885254,
-        "negative": 2.120431474850193e-08,
-        "silence": 1.3983034250486526e-06
+      "prediction": "heytm",
+      "probabilities": {
+        "positive": 99.995361328125,
+        "negative": 0.002840787870809436,
+        "silence": 0.0018040776485577226
       }
     },
     {
       "filename": "positive8.wav",
-      "predictions": {
-        "positive": 0.9999949932098389,
-        "negative": 8.957695030176183e-08,
-        "silence": 4.836726930079749e-06
+      "prediction": "heytm",
+      "probabilities": {
+        "positive": 99.99539947509766,
+        "negative": 0.003060076152905822,
+        "silence": 0.0015409805346280336
       }
     },
     {
       "filename": "positive9.wav",
-      "predictions": {
-        "positive": 0.9999903440475464,
-        "negative": 3.060897824980202e-06,
-        "silence": 6.577929525519721e-06
+      "prediction": "heytm",
+      "probabilities": {
+        "positive": 99.99249267578125,
+        "negative": 0.0042618438601493835,
+        "silence": 0.0032434705644845963
       }
     }
   ]
