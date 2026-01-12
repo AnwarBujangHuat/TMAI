@@ -282,3 +282,172 @@
 2025-12-16 16:14:13,124 - INFO - 
 ================================================================================
 
+2026-01-12 09:52:28,674 - INFO - 🔄 Loading training dataset...
+2026-01-12 09:52:28,675 - INFO - Loading heytm samples from dataset/heytm...
+2026-01-12 09:52:31,664 - INFO - Loaded 1861 heytm samples
+2026-01-12 09:52:31,665 - INFO - Loading unknown samples from dataset/unknown...
+2026-01-12 09:52:33,960 - INFO - Loaded 2695 unknown samples
+2026-01-12 09:52:33,960 - INFO - Loading background samples from dataset/_background_noise_...
+2026-01-12 09:52:33,985 - INFO - Loaded 6 background samples
+2026-01-12 09:52:33,991 - INFO - Dataset shape: (4562, 101, 13)
+2026-01-12 09:52:33,991 - INFO - Labels shape: (4562,)
+2026-01-12 09:52:33,992 - INFO - Training samples: 4562
+2026-01-12 09:52:33,992 - INFO - Using full dataset for training (no validation split).
+2026-01-12 09:52:33,992 - INFO - 🔄 Building model...
+2026-01-12 09:52:34,049 - INFO - Model: "sequential"
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┓
+┃ Layer (type)                         ┃ Output Shape                ┃         Param # ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━┩
+│ reshape (Reshape)                    │ (None, 101, 13, 1)          │               0 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ separable_conv2d (SeparableConv2D)   │ (None, 101, 13, 32)         │              73 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ batch_normalization                  │ (None, 101, 13, 32)         │             128 │
+│ (BatchNormalization)                 │                             │                 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ max_pooling2d (MaxPooling2D)         │ (None, 50, 6, 32)           │               0 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ dropout (Dropout)                    │ (None, 50, 6, 32)           │               0 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ separable_conv2d_1 (SeparableConv2D) │ (None, 50, 6, 64)           │           2,400 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ batch_normalization_1                │ (None, 50, 6, 64)           │             256 │
+│ (BatchNormalization)                 │                             │                 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ max_pooling2d_1 (MaxPooling2D)       │ (None, 25, 3, 64)           │               0 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ dropout_1 (Dropout)                  │ (None, 25, 3, 64)           │               0 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ separable_conv2d_2 (SeparableConv2D) │ (None, 25, 3, 64)           │           4,736 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ batch_normalization_2                │ (None, 25, 3, 64)           │             256 │
+│ (BatchNormalization)                 │                             │                 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ dropout_2 (Dropout)                  │ (None, 25, 3, 64)           │               0 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ global_average_pooling2d             │ (None, 64)                  │               0 │
+│ (GlobalAveragePooling2D)             │                             │                 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ dense (Dense)                        │ (None, 64)                  │           4,160 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ batch_normalization_3                │ (None, 64)                  │             256 │
+│ (BatchNormalization)                 │                             │                 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ dropout_3 (Dropout)                  │ (None, 64)                  │               0 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ dense_1 (Dense)                      │ (None, 3)                   │             195 │
+└──────────────────────────────────────┴─────────────────────────────┴─────────────────┘
+ Total params: 12,460 (48.67 KB)
+ Trainable params: 12,012 (46.92 KB)
+ Non-trainable params: 448 (1.75 KB)
+
+2026-01-12 09:52:34,049 - INFO - 
+================================================================================
+2026-01-12 09:52:34,049 - INFO - 🚀 STARTING TRAINING
+2026-01-12 09:52:34,049 - INFO - ================================================================================
+
+2026-01-12 09:52:37,025 - WARNING - You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. 
+2026-01-12 09:52:39,126 - WARNING - You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. 
+2026-01-12 09:52:41,267 - WARNING - You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. 
+2026-01-12 09:52:43,505 - WARNING - You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. 
+2026-01-12 09:52:45,828 - WARNING - You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. 
+2026-01-12 09:52:50,708 - WARNING - You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. 
+2026-01-12 09:52:53,249 - WARNING - You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. 
+2026-01-12 09:52:56,001 - WARNING - You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. 
+2026-01-12 09:52:58,878 - WARNING - You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. 
+2026-01-12 09:53:02,055 - WARNING - You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. 
+2026-01-12 09:53:04,992 - WARNING - You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. 
+2026-01-12 09:53:11,181 - WARNING - You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. 
+2026-01-12 09:53:17,413 - WARNING - You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. 
+2026-01-12 09:53:20,680 - WARNING - You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. 
+2026-01-12 09:53:27,750 - WARNING - You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. 
+2026-01-12 09:53:38,041 - WARNING - You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. 
+2026-01-12 09:53:45,095 - WARNING - You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. 
+2026-01-12 09:53:48,160 - WARNING - You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. 
+2026-01-12 09:53:51,604 - WARNING - You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. 
+2026-01-12 09:53:55,169 - WARNING - You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. 
+2026-01-12 09:54:02,109 - WARNING - You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. 
+2026-01-12 09:54:05,619 - WARNING - You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. 
+2026-01-12 09:54:14,981 - WARNING - You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. 
+2026-01-12 09:54:21,825 - WARNING - You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. 
+2026-01-12 09:54:25,120 - WARNING - You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. 
+2026-01-12 09:54:31,632 - WARNING - You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. 
+2026-01-12 09:54:38,174 - WARNING - You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. 
+2026-01-12 09:54:41,408 - WARNING - You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. 
+2026-01-12 09:55:08,981 - WARNING - You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. 
+2026-01-12 09:55:11,994 - WARNING - You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. 
+2026-01-12 09:55:12,046 - INFO - 
+✅ Training completed!
+2026-01-12 09:55:12,046 - INFO - 
+================================================================================
+2026-01-12 09:55:12,046 - INFO - 📊 TRAINING SET EVALUATION
+2026-01-12 09:55:12,046 - INFO - ================================================================================
+2026-01-12 09:55:12,830 - INFO - Training Accuracy: 0.9844 (98.44%)
+2026-01-12 09:55:12,830 - INFO - Training Loss: 0.0366
+2026-01-12 09:55:12,830 - INFO - 
+================================================================================
+2026-01-12 09:55:12,830 - INFO - 🧪 TESTING ON SEPARATE TEST SET
+2026-01-12 09:55:12,830 - INFO - ================================================================================
+2026-01-12 09:55:12,830 - INFO - 📁 Detected flat folder structure - testing individual files
+2026-01-12 09:55:12,830 - INFO - Found 25 audio files
+
+2026-01-12 09:55:12,895 - INFO - 0a196374_nohash_0.wav -- positive 0%, negative 100%, silence 0%
+2026-01-12 09:55:12,918 - INFO - 0a196374_nohash_1.wav -- positive 0%, negative 100%, silence 0%
+2026-01-12 09:55:12,941 - INFO - 0a196374_nohash_2.wav -- positive 0%, negative 100%, silence 0%
+2026-01-12 09:55:12,966 - INFO - 0a196374_nohash_3.wav -- positive 0%, negative 100%, silence 0%
+2026-01-12 09:55:12,990 - INFO - 0a196374_nohash_4.wav -- positive 0%, negative 100%, silence 0%
+2026-01-12 09:55:13,014 - INFO - 0a2b400e_nohash_0.wav -- positive 0%, negative 100%, silence 0%
+2026-01-12 09:55:13,038 - INFO - 0a2b400e_nohash_1.wav -- positive 0%, negative 100%, silence 0%
+2026-01-12 09:55:13,062 - INFO - 0a2b400e_nohash_2.wav -- positive 0%, negative 100%, silence 0%
+2026-01-12 09:55:13,085 - INFO - 0a2b400e_nohash_3.wav -- positive 0%, negative 100%, silence 0%
+2026-01-12 09:55:13,109 - INFO - 0a2b400e_nohash_4.wav -- positive 0%, negative 100%, silence 0%
+2026-01-12 09:55:13,132 - INFO - 0a5636ca_nohash_0.wav -- positive 0%, negative 100%, silence 0%
+2026-01-12 09:55:13,155 - INFO - 0ab3b47d_nohash_0.wav -- positive 0%, negative 100%, silence 0%
+2026-01-12 09:55:13,181 - INFO - positive1.wav -- positive 100%, negative 0%, silence 0%
+2026-01-12 09:55:13,204 - INFO - positive10.wav -- positive 100%, negative 0%, silence 0%
+2026-01-12 09:55:13,227 - INFO - positive11.wav -- positive 100%, negative 0%, silence 0%
+2026-01-12 09:55:13,251 - INFO - positive12.wav -- positive 100%, negative 0%, silence 0%
+2026-01-12 09:55:13,274 - INFO - positive13.wav -- positive 100%, negative 0%, silence 0%
+2026-01-12 09:55:13,298 - INFO - positive2.wav -- positive 100%, negative 0%, silence 0%
+2026-01-12 09:55:13,322 - INFO - positive3.wav -- positive 100%, negative 0%, silence 0%
+2026-01-12 09:55:13,345 - INFO - positive4.wav -- positive 100%, negative 0%, silence 0%
+2026-01-12 09:55:13,368 - INFO - positive5.wav -- positive 100%, negative 0%, silence 0%
+2026-01-12 09:55:13,391 - INFO - positive6.wav -- positive 100%, negative 0%, silence 0%
+2026-01-12 09:55:13,415 - INFO - positive7.wav -- positive 100%, negative 0%, silence 0%
+2026-01-12 09:55:13,439 - INFO - positive8.wav -- positive 100%, negative 0%, silence 0%
+2026-01-12 09:55:13,465 - INFO - positive9.wav -- positive 100%, negative 0%, silence 0%
+2026-01-12 09:55:13,466 - INFO - 
+💾 Predictions saved to: test_predictions.json
+2026-01-12 09:55:13,466 - INFO - 
+================================================================================
+2026-01-12 09:55:13,466 - INFO - 🔄 CONVERTING TO TFLITE
+2026-01-12 09:55:13,466 - INFO - ================================================================================
+2026-01-12 09:55:13,516 - INFO - Function `function` contains input name(s) resource with unsupported characters which will be renamed to sequential_1_dense_1_2_biasadd_readvariableop_resource in the SavedModel.
+2026-01-12 09:55:13,535 - INFO - Function `function` contains input name(s) resource with unsupported characters which will be renamed to sequential_1_dense_1_2_biasadd_readvariableop_resource in the SavedModel.
+2026-01-12 09:55:13,705 - INFO - Assets written to: /var/folders/9y/7rzjp51d34j4sx7hqgkyl7sh0000gn/T/tmp_evl6xjb/assets
+2026-01-12 09:55:14,036 - INFO - ✅ Float TFLite model saved: models_scratch/KWS_scratch_float.tflite (0.05 MB)
+2026-01-12 09:55:14,254 - INFO - Assets written to: /var/folders/9y/7rzjp51d34j4sx7hqgkyl7sh0000gn/T/tmpd1bmp7_d/assets
+2026-01-12 09:55:14,519 - INFO - ✅ Quantized TFLite model saved: models_scratch/KWS_scratch.tflite (0.03 MB)
+2026-01-12 09:55:14,519 - INFO - 
+🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉
+2026-01-12 09:55:14,519 - INFO - ✅ TRAINING AND EVALUATION COMPLETED!
+2026-01-12 09:55:14,519 - INFO - 🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉
+2026-01-12 09:55:14,519 - INFO - 
+📁 Models saved in: models_scratch
+2026-01-12 09:55:14,519 - INFO -   ✓ models_scratch/KWS_scratch.h5 (0.23 MB)
+2026-01-12 09:55:14,519 - INFO -   ✓ models_scratch/KWS_scratch_float.tflite (0.05 MB)
+2026-01-12 09:55:14,520 - INFO -   ✓ models_scratch/KWS_scratch.tflite (0.03 MB)
+2026-01-12 09:55:14,520 - INFO - 
+📋 Generated files:
+2026-01-12 09:55:14,520 - INFO -   • training_log.txt - Complete training log
+2026-01-12 09:55:14,520 - INFO -   • test_results_detailed.json - Detailed test metrics
+2026-01-12 09:55:14,520 - INFO -   • confusion_matrix.png - Visual confusion matrix
+2026-01-12 09:55:14,520 - INFO - 
+💡 Next steps:
+2026-01-12 09:55:14,520 - INFO -   1. Review test_results_detailed.json for detailed metrics
+2026-01-12 09:55:14,520 - INFO -   2. Check confusion_matrix.png for visual analysis
+2026-01-12 09:55:14,520 - INFO -   3. Use TensorBoard: tensorboard --logdir=logs_scratch
+2026-01-12 09:55:14,520 - INFO -   4. Deploy TFLite models to mobile devices
+2026-01-12 09:55:14,520 - INFO - 
+================================================================================
+
