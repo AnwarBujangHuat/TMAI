@@ -1,0 +1,32 @@
+{
+  "timestamp": "2026-01-13T19:51:40.099001",
+  "class_names": [
+    "heytm",
+    "unknown",
+    "background"
+  ],
+  "sample_rate": 16000,
+  "duration_sec": 1.0,
+  "mfcc": {
+    "n_mfcc": 13,
+    "n_mels": 40,
+    "n_fft": 512,
+    "hop_length": 160,
+    "normalization": "per-sample (x-mean)/(std+1e-6)"
+  },
+  "keras_input_shape": [
+    null,
+    101,
+    13
+  ],
+  "tflite_input_shape": [
+    1,
+    101,
+    13
+  ],
+  "tflite_outputs": 3,
+  "exported": {
+    "float32": "kws_conv1d_out/models/kws_conv1d_float.tflite",
+    "float16": "kws_conv1d_out/models/kws_conv1d_float16.tflite"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "timestamp": "2026-01-13T19:51:36.731577",
+  "tag": "train",
+  "loss": 0.12414029240608215,
+  "accuracy": 0.9564095735549927,
+  "confusion_matrix": [
+    [
+      1490,
+      92,
+      0
+    ],
+    [
+      75,
+      2213,
+      2
+    ],
+    [
+      0,
+      0,
+      5
+    ]
+  ],
+  "classification_report": "              precision    recall  f1-score   support\n\n       heytm     0.9521    0.9418    0.9469      1582\n     unknown     0.9601    0.9664    0.9632      2290\n  background     0.7143    1.0000    0.8333         5\n\n    accuracy                         0.9564      3877\n   macro avg     0.8755    0.9694    0.9145      3877\nweighted avg     0.9565    0.9564    0.9564      3877\n"
+}

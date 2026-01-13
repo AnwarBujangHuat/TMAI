@@ -1,0 +1,24 @@
+{
+  "timestamp": "2026-01-13T19:51:37.292343",
+  "tag": "val",
+  "loss": 0.11387795954942703,
+  "accuracy": 0.9591240882873535,
+  "confusion_matrix": [
+    [
+      267,
+      12,
+      0
+    ],
+    [
+      16,
+      389,
+      0
+    ],
+    [
+      0,
+      0,
+      1
+    ]
+  ],
+  "classification_report": "              precision    recall  f1-score   support\n\n       heytm     0.9435    0.9570    0.9502       279\n     unknown     0.9701    0.9605    0.9653       405\n  background     1.0000    1.0000    1.0000         1\n\n    accuracy                         0.9591       685\n   macro avg     0.9712    0.9725    0.9718       685\nweighted avg     0.9593    0.9591    0.9592       685\n"
+}
