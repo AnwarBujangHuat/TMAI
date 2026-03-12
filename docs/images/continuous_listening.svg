@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="360" viewBox="0 0 1200 360" role="img" aria-labelledby="title desc">
+  <title id="title">Continuous Listening Strategy</title>
+  <desc id="desc">Timeline showing low-power capture and periodic inference for keyword spotting.</desc>
+  <defs>
+    <style>
+      .bg { fill: #f8fafc; }
+      .axis { stroke: #1f2937; stroke-width: 3; }
+      .tick { stroke: #64748b; stroke-width: 2; }
+      .capture { fill: #dbeafe; stroke: #1d4ed8; stroke-width: 1.8; }
+      .infer { fill: #dcfce7; stroke: #15803d; stroke-width: 1.8; }
+      .txtH { font: 700 20px Arial, sans-serif; fill: #0f172a; }
+      .txt { font: 14px Arial, sans-serif; fill: #334155; }
+      .txtS { font: 13px Arial, sans-serif; fill: #0f766e; }
+    </style>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1200" height="360"/>
+  <text class="txtH" x="60" y="52">Continuous Mic: Low-Power Scheduling Concept</text>
+
+  <line class="axis" x1="80" y1="200" x2="1120" y2="200"/>
+
+  <line class="tick" x1="120" y1="188" x2="120" y2="212"/>
+  <line class="tick" x1="280" y1="188" x2="280" y2="212"/>
+  <line class="tick" x1="440" y1="188" x2="440" y2="212"/>
+  <line class="tick" x1="600" y1="188" x2="600" y2="212"/>
+  <line class="tick" x1="760" y1="188" x2="760" y2="212"/>
+  <line class="tick" x1="920" y1="188" x2="920" y2="212"/>
+  <line class="tick" x1="1080" y1="188" x2="1080" y2="212"/>
+
+  <rect class="capture" x="100" y="120" width="120" height="52" rx="8"/>
+  <rect class="capture" x="260" y="120" width="120" height="52" rx="8"/>
+  <rect class="capture" x="420" y="120" width="120" height="52" rx="8"/>
+  <rect class="capture" x="580" y="120" width="120" height="52" rx="8"/>
+  <rect class="capture" x="740" y="120" width="120" height="52" rx="8"/>
+  <rect class="capture" x="900" y="120" width="120" height="52" rx="8"/>
+
+  <rect class="infer" x="190" y="235" width="70" height="48" rx="8"/>
+  <rect class="infer" x="350" y="235" width="70" height="48" rx="8"/>
+  <rect class="infer" x="510" y="235" width="70" height="48" rx="8"/>
+  <rect class="infer" x="670" y="235" width="70" height="48" rx="8"/>
+  <rect class="infer" x="830" y="235" width="70" height="48" rx="8"/>
+  <rect class="infer" x="990" y="235" width="70" height="48" rx="8"/>
+
+  <text class="txt" x="160" y="151" text-anchor="middle">Capture</text>
+  <text class="txt" x="320" y="151" text-anchor="middle">Capture</text>
+  <text class="txt" x="480" y="151" text-anchor="middle">Capture</text>
+  <text class="txt" x="640" y="151" text-anchor="middle">Capture</text>
+  <text class="txt" x="800" y="151" text-anchor="middle">Capture</text>
+  <text class="txt" x="960" y="151" text-anchor="middle">Capture</text>
+
+  <text class="txt" x="225" y="264" text-anchor="middle">Infer</text>
+  <text class="txt" x="385" y="264" text-anchor="middle">Infer</text>
+  <text class="txt" x="545" y="264" text-anchor="middle">Infer</text>
+  <text class="txt" x="705" y="264" text-anchor="middle">Infer</text>
+  <text class="txt" x="865" y="264" text-anchor="middle">Infer</text>
+  <text class="txt" x="1025" y="264" text-anchor="middle">Infer</text>
+
+  <text class="txtS" x="80" y="320">Idea: keep audio capture lightweight, run inference on cadence (for example every 200-500 ms), then smooth scores before trigger.</text>
+</svg>

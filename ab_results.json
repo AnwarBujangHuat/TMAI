@@ -1,0 +1,59 @@
+{
+  "timestamp": "2026-03-12T09:44:55.600096",
+  "protocol": {
+    "common_file_count": 25,
+    "scratch_prediction_file": "test_predictions.json",
+    "transfer_prediction_file": "test_predictions_transfer.json"
+  },
+  "winner": {
+    "decision": "tie",
+    "reason": "Metrics are effectively tied under current protocol."
+  },
+  "models": {
+    "scratch": {
+      "metrics": {
+        "total_files": 25,
+        "predicted_counts": {
+          "unknown": 12,
+          "heytm": 13
+        },
+        "keyword_recall": 1.0,
+        "false_trigger_rate": 0.0,
+        "weak_label_accuracy": 1.0,
+        "avg_positive_score_on_positive": 99.99422102708083,
+        "avg_positive_score_on_non_positive": 0.7256587883942606,
+        "positive_eval_count": 13,
+        "non_positive_eval_count": 12
+      },
+      "artifacts": {
+        "quant_tflite": "models_scratch/KWS_scratch.tflite",
+        "quant_tflite_mb": 0.032787322998046875,
+        "float_tflite": "models_scratch/KWS_scratch_float.tflite",
+        "float_tflite_mb": 0.05321502685546875
+      }
+    },
+    "transfer": {
+      "metrics": {
+        "total_files": 25,
+        "predicted_counts": {
+          "unknown": 12,
+          "heytm": 13
+        },
+        "keyword_recall": 1.0,
+        "false_trigger_rate": 0.0,
+        "weak_label_accuracy": 1.0,
+        "avg_positive_score_on_positive": 99.90214421198918,
+        "avg_positive_score_on_non_positive": 0.14174991066101938,
+        "positive_eval_count": 13,
+        "non_positive_eval_count": 12
+      },
+      "artifacts": {
+        "quant_tflite": "models_transfer/KWS_mobilenet_transfer.tflite",
+        "quant_tflite_mb": 4.94500732421875,
+        "float_tflite": "models_transfer/KWS_mobilenet_transfer_float.tflite",
+        "float_tflite_mb": 9.831165313720703
+      }
+    }
+  },
+  "disagreements": []
+}

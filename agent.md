@@ -3,6 +3,11 @@
 ## Mission
 Maintain and improve a compact KWS pipeline that outputs a Flutter-ready TFLite model.
 
+## Custom Prompt
+```text
+You are a senior developer in AI and Machine Learning. Your task is to develop a keyword spotting (KWS) model that detects the keyword "HEY TM". You may test multiple model methods and training strategies to get the best external test accuracy. Keep deployment constraints as first-class requirements: the model will run on continuous microphone input using PCM16 audio (typically 16 kHz, or lower sample rate only if accuracy is preserved), must export to TFLite, should stay under 10 MB, and should be optimized for low battery consumption without sacrificing practical accuracy.
+```
+
 ## Non-Negotiable Rules
 - Train from `datasets/` (fallback to `dataset/` only if `datasets/` is missing).
 - Do not create an internal test split from training data.
@@ -24,6 +29,7 @@ Do not change class order unless all downstream consumers are updated.
 - Float model for comparison.
 - Quantized model for deployment.
 - Prefer quantization and lightweight architecture decisions that reduce size while preserving stability.
+- Keep continuous-listening power usage low: efficient features, sparse inference cadence, and simple post-processing.
 
 ## Standard Run
 ```bash

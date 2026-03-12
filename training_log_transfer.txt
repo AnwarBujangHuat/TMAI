@@ -1,0 +1,88 @@
+2026-03-12 09:41:23,280 - INFO - Using training dataset directory: dataset
+2026-03-12 09:41:23,280 - INFO - 
+================================================================================
+2026-03-12 09:41:23,280 - INFO - 🔄 Loading transfer-learning dataset
+2026-03-12 09:41:23,280 - INFO - ================================================================================
+2026-03-12 09:41:23,280 - INFO - Loading heytm samples from dataset/heytm...
+2026-03-12 09:41:27,012 - INFO - Loaded 1861 heytm samples
+2026-03-12 09:41:27,012 - INFO - Loading unknown samples from dataset/unknown...
+2026-03-12 09:41:31,098 - INFO - Loaded 2695 unknown samples
+2026-03-12 09:41:31,099 - INFO - Loading background samples from dataset/_background_noise_...
+2026-03-12 09:41:31,131 - INFO - Loaded 6 background samples
+2026-03-12 09:41:31,168 - INFO - Dataset shape: (4562, 101, 77)
+2026-03-12 09:41:31,168 - INFO - Label shape: (4562,)
+2026-03-12 09:41:31,179 - INFO - Training samples: 4562
+2026-03-12 09:41:31,179 - INFO - Input shape: (101, 77)
+2026-03-12 09:41:31,422 - INFO - Loaded MobileNetV2 ImageNet pretrained weights.
+2026-03-12 09:41:31,444 - INFO - Model: "kws_transfer_mobilenet"
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ Layer (type)                  ┃ Output Shape              ┃         Param # ┃ Connected to               ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│ audio_features (InputLayer)   │ (None, 101, 77)           │               0 │ -                          │
+├───────────────────────────────┼───────────────────────────┼─────────────────┼────────────────────────────┤
+│ reshape (Reshape)             │ (None, 101, 77, 1)        │               0 │ audio_features[0][0]       │
+├───────────────────────────────┼───────────────────────────┼─────────────────┼────────────────────────────┤
+│ concatenate (Concatenate)     │ (None, 101, 77, 3)        │               0 │ reshape[0][0],             │
+│                               │                           │                 │ reshape[0][0],             │
+│                               │                           │                 │ reshape[0][0]              │
+├───────────────────────────────┼───────────────────────────┼─────────────────┼────────────────────────────┤
+│ resizing (Resizing)           │ (None, 96, 96, 3)         │               0 │ concatenate[0][0]          │
+├───────────────────────────────┼───────────────────────────┼─────────────────┼────────────────────────────┤
+│ mobilenetv2_1.00_96           │ (None, 1280)              │       2,257,984 │ resizing[0][0]             │
+│ (Functional)                  │                           │                 │                            │
+├───────────────────────────────┼───────────────────────────┼─────────────────┼────────────────────────────┤
+│ dense (Dense)                 │ (None, 256)               │         327,936 │ mobilenetv2_1.00_96[0][0]  │
+├───────────────────────────────┼───────────────────────────┼─────────────────┼────────────────────────────┤
+│ batch_normalization           │ (None, 256)               │           1,024 │ dense[0][0]                │
+│ (BatchNormalization)          │                           │                 │                            │
+├───────────────────────────────┼───────────────────────────┼─────────────────┼────────────────────────────┤
+│ dropout (Dropout)             │ (None, 256)               │               0 │ batch_normalization[0][0]  │
+├───────────────────────────────┼───────────────────────────┼─────────────────┼────────────────────────────┤
+│ dense_1 (Dense)               │ (None, 128)               │          32,896 │ dropout[0][0]              │
+├───────────────────────────────┼───────────────────────────┼─────────────────┼────────────────────────────┤
+│ batch_normalization_1         │ (None, 128)               │             512 │ dense_1[0][0]              │
+│ (BatchNormalization)          │                           │                 │                            │
+├───────────────────────────────┼───────────────────────────┼─────────────────┼────────────────────────────┤
+│ dropout_1 (Dropout)           │ (None, 128)               │               0 │ batch_normalization_1[0][… │
+├───────────────────────────────┼───────────────────────────┼─────────────────┼────────────────────────────┤
+│ dense_2 (Dense)               │ (None, 3)                 │             387 │ dropout_1[0][0]            │
+└───────────────────────────────┴───────────────────────────┴─────────────────┴────────────────────────────┘
+ Total params: 2,620,739 (10.00 MB)
+ Trainable params: 361,987 (1.38 MB)
+ Non-trainable params: 2,258,752 (8.62 MB)
+
+2026-03-12 09:41:31,444 - INFO - 
+================================================================================
+2026-03-12 09:41:31,444 - INFO - 🚀 Stage 1: train transfer head (frozen backbone)
+2026-03-12 09:41:31,444 - INFO - ================================================================================
+2026-03-12 09:43:28,013 - INFO - 
+================================================================================
+2026-03-12 09:43:28,013 - INFO - 🔧 Stage 2: fine-tune top MobileNetV2 layers
+2026-03-12 09:43:28,013 - INFO - ================================================================================
+2026-03-12 09:44:40,458 - INFO - 
+Training Accuracy: 0.9976 (99.76%)
+2026-03-12 09:44:40,458 - INFO - Training Loss: 0.0095
+2026-03-12 09:44:40,458 - INFO - 
+================================================================================
+2026-03-12 09:44:40,458 - INFO - 🧪 Testing transfer model on flat test folder
+2026-03-12 09:44:40,458 - INFO - ================================================================================
+2026-03-12 09:44:41,612 - INFO - 💾 Saved transfer predictions to test_predictions_transfer.json
+2026-03-12 09:44:41,612 - INFO - 
+================================================================================
+2026-03-12 09:44:41,612 - INFO - 🔄 Converting transfer model to TFLite
+2026-03-12 09:44:41,612 - INFO - ================================================================================
+2026-03-12 09:44:42,194 - INFO - Function `function` contains input name(s) resource with unsupported characters which will be renamed to kws_transfer_mobilenet_1_dense_2_1_biasadd_readvariableop_resource in the SavedModel.
+2026-03-12 09:44:42,285 - INFO - Function `function` contains input name(s) resource with unsupported characters which will be renamed to kws_transfer_mobilenet_1_dense_2_1_biasadd_readvariableop_resource in the SavedModel.
+2026-03-12 09:44:44,561 - INFO - Assets written to: /var/folders/9y/7rzjp51d34j4sx7hqgkyl7sh0000gn/T/tmpq1fdrnbt/assets
+2026-03-12 09:44:48,169 - INFO - ✅ Float TFLite saved: models_transfer/KWS_mobilenet_transfer_float.tflite (9.83 MB)
+2026-03-12 09:44:51,166 - INFO - Assets written to: /var/folders/9y/7rzjp51d34j4sx7hqgkyl7sh0000gn/T/tmpi0a_1mq8/assets
+2026-03-12 09:44:54,832 - INFO - ✅ Quantized TFLite saved: models_transfer/KWS_mobilenet_transfer.tflite (4.95 MB)
+2026-03-12 09:44:54,832 - INFO - 
+🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉
+2026-03-12 09:44:54,832 - INFO - ✅ TRANSFER TRAINING + EVALUATION COMPLETED
+2026-03-12 09:44:54,832 - INFO - 🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉
+2026-03-12 09:44:54,832 - INFO - 
+Artifacts directory: models_transfer
+2026-03-12 09:44:54,832 - INFO - 
+================================================================================
+

@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="380" viewBox="0 0 1200 380" role="img" aria-labelledby="title desc">
+  <title id="title">HEY TM KWS Pipeline</title>
+  <desc id="desc">Pipeline from microphone input to Flutter action for keyword spotting.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#1f2937"/>
+    </marker>
+    <style>
+      .bg { fill: #f8fafc; }
+      .box { fill: #ffffff; stroke: #1f2937; stroke-width: 2; rx: 12; ry: 12; }
+      .head { font: 700 19px Arial, sans-serif; fill: #0f172a; }
+      .txt { font: 14px Arial, sans-serif; fill: #334155; }
+      .line { stroke: #1f2937; stroke-width: 2.5; marker-end: url(#arrow); }
+      .note { font: 13px Arial, sans-serif; fill: #0f766e; }
+    </style>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1200" height="380"/>
+
+  <rect class="box" x="40" y="95" width="210" height="180"/>
+  <text class="head" x="145" y="130" text-anchor="middle">Mic Input</text>
+  <text class="txt" x="145" y="160" text-anchor="middle">PCM16 stream</text>
+  <text class="txt" x="145" y="183" text-anchor="middle">16 kHz, mono</text>
+  <text class="txt" x="145" y="206" text-anchor="middle">1 s rolling window</text>
+
+  <rect class="box" x="285" y="95" width="210" height="180"/>
+  <text class="head" x="390" y="130" text-anchor="middle">Features</text>
+  <text class="txt" x="390" y="160" text-anchor="middle">Normalize audio</text>
+  <text class="txt" x="390" y="183" text-anchor="middle">MFCC extraction</text>
+  <text class="txt" x="390" y="206" text-anchor="middle">(13 x time frames)</text>
+
+  <rect class="box" x="530" y="95" width="210" height="180"/>
+  <text class="head" x="635" y="130" text-anchor="middle">KWS Model</text>
+  <text class="txt" x="635" y="160" text-anchor="middle">DS-CNN / Separable Conv</text>
+  <text class="txt" x="635" y="183" text-anchor="middle">Outputs class scores:</text>
+  <text class="txt" x="635" y="206" text-anchor="middle">heytm | unknown | background</text>
+
+  <rect class="box" x="775" y="95" width="210" height="180"/>
+  <text class="head" x="880" y="130" text-anchor="middle">Post Processing</text>
+  <text class="txt" x="880" y="160" text-anchor="middle">Threshold + debounce</text>
+  <text class="txt" x="880" y="183" text-anchor="middle">Smoothing over frames</text>
+  <text class="txt" x="880" y="206" text-anchor="middle">Reduce false triggers</text>
+
+  <rect class="box" x="1020" y="95" width="150" height="180"/>
+  <text class="head" x="1095" y="130" text-anchor="middle">Flutter</text>
+  <text class="txt" x="1095" y="160" text-anchor="middle">TFLite runtime</text>
+  <text class="txt" x="1095" y="183" text-anchor="middle">Trigger action</text>
+  <text class="txt" x="1095" y="206" text-anchor="middle">on "HEY TM"</text>
+
+  <line class="line" x1="250" y1="185" x2="285" y2="185"/>
+  <line class="line" x1="495" y1="185" x2="530" y2="185"/>
+  <line class="line" x1="740" y1="185" x2="775" y2="185"/>
+  <line class="line" x1="985" y1="185" x2="1020" y2="185"/>
+
+  <text class="note" x="40" y="330">Deployment target: quantized .tflite under 10 MB, tuned for continuous listening efficiency.</text>
+</svg>
