@@ -260,8 +260,21 @@ class ModelTester:
         plt.close()
 
 # ---- Setup paths ----
-DATASET_DIR = "dataset"  # Training dataset
-TEST_DIR = "test"  # Test dataset with same structure
+def resolve_dataset_dir(candidates):
+    """Pick the first existing dataset directory from the preferred names."""
+    for path in candidates:
+        if os.path.exists(path):
+            logging.info(f"Using training dataset directory: {path}")
+            return path
+    logging.error(
+        "❌ Training dataset folder not found. Expected one of: "
+        + ", ".join(candidates)
+    )
+    sys.exit(1)
+
+
+DATASET_DIR = resolve_dataset_dir(["datasets", "dataset"])
+TEST_DIR = "test"  # Separate test dataset
 TRAIN_DIR = "train_scratch"
 LOGS_DIR = "logs_scratch"
 MODELS_DIR = "models_scratch"
